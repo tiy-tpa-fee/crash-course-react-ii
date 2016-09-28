@@ -1,24 +1,21 @@
 import React from 'react'
+import { observer } from 'mobx-react'
 import { PanelView } from '..'
-import unitData from '../../units.json'
+import game from '../../game'
 import style from './style.sass'
 
-class SummaryView extends React.Component {
-
-  static propTypes = {
-    army: React.PropTypes.object.isRequired
-  }
+@observer class SummaryView extends React.Component {
 
   render () {
-    const units = Object.keys(this.props.army).filter(unit => this.props.army[unit] > 0)
+    const units = Object.keys(game.army).filter(unit => game.army[unit] > 0)
     let list
     if (units.length > 0) {
       list = <ul>
         {units.map((unit, i) => {
           return <li key={i}>
-            {unitData[unit].name}
+            {game.info[unit].name}
             <span className={style.count}>
-              &times;{this.props.army[unit]}
+              &times;{game.army[unit]}
             </span>
           </li>
         })}

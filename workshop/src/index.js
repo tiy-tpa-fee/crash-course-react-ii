@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { AppContainer } from 'react-hot-loader'
-import { App } from './components'
+import { AppView } from './components'
 
 import './styles/screen.sass'
 
@@ -14,9 +14,9 @@ const render = (app) => {
 
 if (module.hot) {
   module.hot.accept('./components', () => {
-    const NextApp = require('./components').App
+    const NextApp = require('./components').AppView
     render(<NextApp />)
   })
 }
 
-render(<App />)
+render(<AppView />)
