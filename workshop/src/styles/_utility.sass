@@ -1,0 +1,13 @@
+$gutter-size: 0.5em
+$text-color: #382c24
+$body-color: #4e301c
+$border-color: #804e2d
+$background-color: #f5e6dc
+
+=font-smoothing($value: on)
+  @if $value == on
+    -moz-osx-font-smoothing: grayscale
+    -webkit-font-smoothing: antialiased
+  @else
+    -moz-osx-font-smoothing: auto
+    -webkit-font-smoothing: subpixel-antialiased
