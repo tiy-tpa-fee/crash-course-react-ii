@@ -68,7 +68,7 @@
 ^ At some point, we'll find we need to separate the idea of state completely. This is where the ideas of "Flux" comes in.
 
 ---
-# Advanced State Management
+# **Advanced State Management**
 
 ![](graph.gif)
 
@@ -104,69 +104,50 @@
 ---
 ## MobX
 
+^ bills itself as Simple, scalable state management
+^ https://github.com/mobxjs/mobx
+
+![original 60%](mobx.png)
+
+---
+
+![fit%](mobx-flow.png)
+
 ---
 ## Cerebral
 
----
-## Relay
+^ With Cerebral, you define the state of your application as a single model: a single state tree. Unlike MobX, and Redux, where you _can_ do this, this is a strict principle of Cerebral.
+  - Uses familiar "MVC" concepts
+  - Actions are called "Signals"
+  - http://www.cerebraljs.com/
 
-## GraphQL
+![original 120%](cerebral.png)
 
 ---
 # **Tooling**
 
 ---
 
-## ES2015+
+### Babel & ES2015+
+
+![](babel.png)
+
+^ Babel transforms your JavaScript. You put JavaScript in and get JavaScript out.
 
 ---
 
-### Babel
+```JavaScript
 
----
-## Task Runners
 
----
-### Grunt
 
----
-### Gulp
+        // ES2015
+        [1,2,3].map(n => n + 1)
 
----
-### Broccoli, etc.
-
----
-### Nothing (i.e. npm scripts)
-
----
-## Module Loaders & Bundlers
-
----
-### Require.js
-
----
-### Browserify
-
----
-### JSPM, Rollup, etc.
-
----
-### webpack
-
----
-## Workflow
-
----
-### BrowserSync
-
----
-### webpack dev server
-
----
-### LiveReload && CSS
-
----
-### Hot Module Loading
+        // ES5
+        [1,2,3].map(function(n) {
+          return n + 1;
+        })
+```
 
 ---
 # **Organizing Stylesheets**
@@ -227,7 +208,7 @@ CSS in files where all class names and animation names are scoped locally by def
 # **Workshop**
 
 ---
-# Credits
+# **Credits**
 
 ## Sources for Images
 
