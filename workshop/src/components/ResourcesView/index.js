@@ -18,7 +18,13 @@ class ResourcesView extends React.Component {
   }
 
   get supply () {
-    const total = Object.values(this.props.army).reduce((supply, count) => { return supply + count }, 0)
+    // TODO: DO THIS BETTER
+    const keys = Object.keys(this.props.army)
+    let units = []
+    for (var i = 0; i < keys.length; i++) {
+      units.push(this.props.army[keys[i]])
+    }
+    const total = units.reduce((supply, count) => { return supply + count }, 0)
     return this.props.supply - total
   }
 
