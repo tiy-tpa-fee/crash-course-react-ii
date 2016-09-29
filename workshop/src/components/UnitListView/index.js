@@ -1,24 +1,15 @@
 import React from 'react'
 import { PanelView, UnitView } from '..'
 import style from './style.sass'
-import units from '../../units.json'
+import game from '../../game.js'
 
 class UnitListView extends React.Component {
 
-  static propTypes = {
-    army: React.PropTypes.object.isRequired,
-    addUnit: React.PropTypes.func.isRequired,
-    removeUnit: React.PropTypes.func.isRequired
-  }
-
   render () {
-    const unitViews = Object.keys(units).map((key, i) => {
+    const unitViews = Object.keys(game.info).map((key, i) => {
       return <UnitView
-        {...units[key]}
+        {...game.info[key]}
         unit={key}
-        army={this.props.army}
-        addUnit={this.props.addUnit}
-        removeUnit={this.props.removeUnit}
         key={i}
       />
     })

@@ -1,38 +1,16 @@
 import React from 'react'
-import style from './style.sass'
-import unitData from '../../units.json'
+import { observer } from 'mobx-react'
 import { PanelView } from '..'
+import style from './style.sass'
+import game from '../../game.js'
 
-class ResourcesView extends React.Component {
-
-  static propTypes = {
-    army: React.PropTypes.object.isRequired,
-    gold: React.PropTypes.number.isRequired,
-    supply: React.PropTypes.number.isRequired
-  }
-
-  get gold () {
-    return Object.keys(this.props.army).reduce((gold, unit) => {
-      return gold - (this.props.army[unit] * unitData[unit].cost)
-    }, this.props.gold)
-  }
-
-  get supply () {
-    // TODO: DO THIS BETTER
-    const keys = Object.keys(this.props.army)
-    let units = []
-    for (var i = 0; i < keys.length; i++) {
-      units.push(this.props.army[keys[i]])
-    }
-    const total = units.reduce((supply, count) => { return supply + count }, 0)
-    return this.props.supply - total
-  }
+@observer class ResourcesView extends React.Component {
 
   render () {
     return <PanelView title='Resources' className={style.resources}>
       <ul>
-        <li className={style.gold}>{this.gold}</li>
-        <li className={style.resources}>{this.supply}</li>
+        <li className={style.gold}>{game.gold}</li>
+        <li className={style.resources}>{game.supply}</li>
       </ul>
     </PanelView>
   }

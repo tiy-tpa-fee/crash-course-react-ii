@@ -1,7 +1,10 @@
 import React from 'react'
+import { observer } from 'mobx-react'
 import style from './style.sass'
 
-class UnitView extends React.Component {
+import game from '../../game.js'
+
+@observer class UnitView extends React.Component {
 
   static propTypes = {
     unit: React.PropTypes.string.isRequired,
@@ -9,18 +12,15 @@ class UnitView extends React.Component {
     summary: React.PropTypes.string.isRequired,
     cost: React.PropTypes.number.isRequired,
     attack: React.PropTypes.number.isRequired,
-    health: React.PropTypes.number.isRequired,
-    army: React.PropTypes.object.isRequired,
-    addUnit: React.PropTypes.func.isRequired,
-    removeUnit: React.PropTypes.func.isRequired
+    health: React.PropTypes.number.isRequired
   }
 
   handleIncrement = () => {
-    this.props.addUnit(this.props.unit)
+    game.addUnit(this.props.unit)
   }
 
   handleDecrement = () => {
-    this.props.removeUnit(this.props.unit)
+    game.removeUnit(this.props.unit)
   }
 
   render () {
@@ -38,7 +38,7 @@ class UnitView extends React.Component {
         </dl>
       </td>
       <td className={style.count}>
-        &times;{this.props.army[this.props.unit]}
+        &times;{game.army[this.props.unit]}
       </td>
       <td className={style.add}>
         <button onClick={this.handleIncrement}>+</button>
